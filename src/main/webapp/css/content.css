@@ -1,0 +1,15 @@
+.content1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.content1 img{
+	width: 1200px;
+}
+
+
+.contentWrap, .loginWrap{
+	height: 800px;
+}

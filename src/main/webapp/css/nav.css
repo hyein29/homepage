@@ -1,0 +1,35 @@
+.navWrap{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 1200px;
+}
+
+.menuList{
+	width: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: medium;
+}
+
+.menuList li{
+	list-style-type: none;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}
+
+.menuList li a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-family: "HY°ß°íµñ";
+}
+.menuList li a:hover{
+	text-decoration: underline;
+	text-underline-position: under;
+	color: #ff8080;
+	font-weight: bolder;
+	
+}

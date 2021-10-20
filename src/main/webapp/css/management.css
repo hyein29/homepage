@@ -1,0 +1,79 @@
+.userListTitle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.userListTable{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+
+
+
+
+
+
+.userListTable table{
+	border-top: 1px solid grey;
+	border-collapse: collapse;
+	width: 1500px;
+}
+
+.userListTable table th, .userListTable table td{
+	border-bottom: 1px solid grey;
+	padding: 10px;
+	text-align: center;
+	font-size: small;
+}
+
+
+
+/* .userNo{
+	width: 80px;
+}
+.userId{
+	width: 100px;
+}
+.userName{
+	width: 100px;
+}
+.userBday{
+	width: 200px;
+}
+.userGender{
+	width: 50px;
+}
+.userTel{
+	width: 250px;
+}
+.userEmail{
+	width: 300px;
+}
+.userGrade{
+	width: 130px;
+}
+.userRegDate{
+	width: 250px;
+} */
+
+
+.selectBoardListBtns, .boardInsertBtn{
+	font-size: small;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 185px;
+	margin-top: 20px;	
+}
+
+#viewListBtn{
+	margin-left: 10px;
+}
+
+
+
+

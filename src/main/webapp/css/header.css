@@ -1,0 +1,78 @@
+.haTopWrap{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hdTop{
+	display: flex;
+	justify-content: flex-end;
+	width: 1200px;
+}
+
+.hdNavBar{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.hdNavBar nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	
+}
+
+.hdNav{
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.hdNavForAdmin{
+	width: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.hdNavItem{
+	list-style-type: none;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}
+
+.hdNavItem a{
+	text-decoration: none;
+	font-size: small;
+	color: black;
+}
+.hdNavItem a:hover{
+	text-decoration: none;
+	font-size: small;
+	font-weight: bold;
+	color: black;
+}
+
+
+.hdInnerWrap{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hdInner{
+	margin-top: 10px;
+	width: 1200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 80px;
+	padding-right: 80px;
+}
+
+.logo img{
+	width: 300px;
+}

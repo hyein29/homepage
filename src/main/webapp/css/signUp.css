@@ -1,0 +1,70 @@
+.signUpWrap{
+	height: 800px;
+	font-size: small;
+}
+
+#signUpBtn, #signUpCancelBtn{
+  position:relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width:120px;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+#signUpBtn:hover, #signUpCancelBtn:hover {
+  background-position: right;
+}
+
+/* #u_email3{
+	display: none;
+} */
+
+
+.signUpTitle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.signUpForm{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.signUpTable{
+	width: 420px;
+	margin-top: 50px;
+}
+
+.signUpTable td{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.td1{
+	width: 100px;
+}
+
+.td2{
+	width: 190px;
+}
+
+.signUpBtns{
+	width: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#u_email2{
+	width: 100px;
+}

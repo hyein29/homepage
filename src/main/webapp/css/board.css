@@ -1,0 +1,75 @@
+.boardTitle, .insertTitle, .updateTitle{
+	text-align: center;
+}
+
+.boardSearchForm{
+	font-size: small;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30px;
+}
+.boardSearchBox{
+	width: 350px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.boardTable{
+	/* border: 2px dotted black; */
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+}
+
+.boardTable table{
+	border-collapse: collapse;
+	width: 1100px;
+}
+
+.boardTable table th, .boardTable table td{
+	border-bottom: 1px solid grey;
+	padding: 10px;
+	text-align: center;
+	font-size: small;
+}
+
+
+.lock{
+	width: 20px;
+}
+
+
+.tbNo{
+	width: 80px;
+}
+.tbTitle{
+	width: 350px;
+	text-align: left;
+}
+.tbWriter{
+	width: 100px;
+	text-align: left;
+}
+.tbDate{
+	width: 120px;
+}
+.tbViews{
+	width: 70px;
+}
+
+
+.selectBoardListBtns, .boardInsertBtn{
+	font-size: small;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;	
+}
+
+#viewListBtn{
+	margin-left: 10px;
+}
+
+
+
+

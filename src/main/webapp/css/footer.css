@@ -1,0 +1,46 @@
+.ftWrap{
+	font-size: small;
+	width: 1300px;
+	display: table; 
+	margin-left: auto; 
+	margin-right: auto;
+	color: #a5a5a5;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.ft1{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.aTag, .aTag:hover{
+	text-decoration: none;
+	color: black;
+}
+
+.ftLogo img{
+	width: 200px;
+}
+
+.ftMenu ul{
+	list-style-type: none;
+}
+.ftMenu li{
+	margin-bottom: 5px;
+}
+.ftMenu ul li a{
+	text-decoration: none;
+	color: black;
+}
+.ftMenu ul li a:hover{
+	text-decoration: none;
+	font-weight: bold;
+}
+b{
+	color: black;
+}
+.csTelNum{
+	color: green;
+}
+

@@ -1,0 +1,65 @@
+
+.conTable table{
+	border: 2px solid black;
+	width: 500px;
+}
+
+.conTitle{
+	border: 1px solid red;
+	text-align: center;
+}
+
+.conCon{
+	height: 200px;
+}
+
+.conTable table th, .conTable table td{
+	border: 1px solid blue;
+	text-align: center;
+}
+
+.cmtTable1 table th, .cmtTable1 table td{
+	border: 1px solid red;
+	text-align: center;
+}
+
+.cmtTable2 table th, .cmtTable2 table td{
+	border: 1px solid blue;
+	font-size: small;
+}
+
+.cmt2No{
+	width: 40px;
+	text-align: center;
+}
+
+.cmt2Writer{
+	width: 150px;
+	padding-left: 10px;
+}
+.cmt2Date{
+	width: 300px;
+}
+.cmt2Up{
+	width: 90px;
+	text-align: center;
+}
+.cmt2Del, .cmt2Can{
+	width: 90px;
+	text-align: center;
+}
+
+.cmt2Con{
+	text-align: left;
+	padding-left: 10px;
+}
+
+
+.submitLink{
+	background-color: transparent;
+    text-decoration: underline;
+    border: none;
+
+    cursor: pointer;
+}
+

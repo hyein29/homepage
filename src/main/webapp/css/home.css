@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* body{
+	height: 100%;
+} */
+
+#wrapper{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+#header{
+	height: 150px;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+#nav{
+	height: 80px;
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+}
+
+#content{
+	margin-top: 10px;
+	height: 100%;
+}
+
+#footer{
+	height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
