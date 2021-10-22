@@ -24,22 +24,9 @@
 			<h3>게시판</h3>
 		</div>
 		
-			
-		<!-- <div class="boardSearchForm">
-			<form action="/homepage2/searchBoardList" method="get">
-				<div class="boardSearchBox">
-					<div><input type="radio" name="opt" value="b_writer" required="required"> 이름</div> <br>
-					<div><input type="radio" name="opt" value="b_title"> 제목</div> <br>
-					<div><input type="radio" name="opt" value="b_content"> 내용</div> <br>
-					<input type="text" name="boardSearchVal">
-					<input type="submit" value="검색">
-				</div>
-			</form>
-		</div> -->
 		
-		
-		<div class="boardTable">
-			<table>
+		<div class="boardTableDiv">
+			<table class="boardTable">
 			
 				<thead>
 					<tr>
@@ -50,7 +37,7 @@
 									<div><input type="radio" name="opt" value="b_writer" required="required"> 이름</div> <br>
 									<div><input type="radio" name="opt" value="b_title"> 제목</div> <br>
 									<div><input type="radio" name="opt" value="b_content"> 내용</div> <br>
-									<input type="text" name="boardSearchVal">
+									<input type="text" name="boardSearchVal" autocomplete="off">
 									<input type="submit" value="검색">
 								</div>	
 							</form>
@@ -70,7 +57,19 @@
 		
 			
 		<c:forEach var="board" items="${boardList}">
+				<fmt:formatDate var="b_reg_date" value="${board.b_reg_date}" pattern="yyyy-MM-dd"/>
+				<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
+						
+				<fmt:formatDate var="b_reg_dd" value="${board.b_reg_date}" pattern="yyyyMMdd"/>
+				<fmt:formatDate var="today_dd" value="${now}" pattern="yyyyMMdd"/>
+				<fmt:parseNumber var="subtract_dd" value="${today_dd - b_reg_dd}" integerOnly="true" />
+				
+				<fmt:parseNumber var="diffhour" value="${board.diff_date_r/3600000}" integerOnly="true"/>
+				<fmt:parseNumber var="diffmin" value="${board.diff_date_r/60000}" integerOnly="true"/>
+				<fmt:parseNumber var="diffsec" value="${board.diff_date_r/1000}" integerOnly="true"/>
+		
 				<input type="hidden" id="b_no" value="${board.b_no}">
+				
 		
 				<tbody>
 					<tr>
@@ -80,21 +79,37 @@
 						<c:if test="${board.b_pw != null}">
 						<td><img src = "/homepage2/icon/lock.gif"></td>
 						<td class="tbTitle">
-							<%-- <a href="/homepage2/viewBoardPassword?b_no=${board.b_no}&b_pw=${board.b_pw}">${board.b_title} [${board.c_cnt}]</a> --%>
-							<a href="/homepage2/viewBoardPassword?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}]</a>
+							<div style="margin-left: 50px">
+								<c:choose>
+									<c:when test="${b_reg_date == today}">
+										<a href="/homepage2/viewBoardPassword?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}] <img src="/homepage2/icon/new.gif"></a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="/homepage2/viewBoardPassword?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}] </a>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</td>
-						
 						</c:if>
 						
 						<c:if test="${board.b_pw == null}">
 						<td></td>
 						<td class="tbTitle">
-							<a href="/homepage2/viewBoardContent?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}]</a>
+							<div style="margin-left: 50px">
+								<c:choose>
+									<c:when test="${b_reg_date == today}">
+										<a href="/homepage2/viewBoardContent?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}] <img src="/homepage2/icon/new.gif"></a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="/homepage2/viewBoardContent?b_no=${board.b_no}">${board.b_title} [${board.c_cnt}]</a>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</td>
 						</c:if>
 						
-						
-						<%-- <td class="tbTitle"><a href="/board/viewContent/viewBoardPasswordPage.jsp?b_no=${board.b_no}&b_views=${board.b_views}&b_pw=${board.b_pw}">${board.b_title}</a></td> --%>
 						
 						<c:choose>
 							<c:when test="${board.u_grade eq 'admin'}">
@@ -108,21 +123,6 @@
 						
 						
 						<td class="tbDate">
-						
-						
-						<fmt:formatDate var="b_reg_date" value="${board.b_reg_date}" pattern="yyyy-MM-dd"/>
-						<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
-						
-						<fmt:formatDate var="b_reg_dd" value="${board.b_reg_date}" pattern="yyyyMMdd"/>
-						<fmt:formatDate var="today_dd" value="${now}" pattern="yyyyMMdd"/>
-						<fmt:parseNumber var="subtract_dd" value="${today_dd - b_reg_dd}" integerOnly="true" />
-						
-					
-						<fmt:parseNumber var="diffhour" value="${board.diff_date_r/3600000}" integerOnly="true"/>
-						<fmt:parseNumber var="diffmin" value="${board.diff_date_r/60000}" integerOnly="true"/>
-						<fmt:parseNumber var="diffsec" value="${board.diff_date_r/1000}" integerOnly="true"/>
-						
-						
 						
 						<c:choose>
 							<c:when test="${b_reg_date == today}">
@@ -312,36 +312,8 @@
 	   </c:choose>
 	
 	</div>
-	
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script>
-$(document).ready(function(){
-	var b_no = $("#b_no").val();
-	
-	$.ajax({
-		url : "/homepage2/countBoardComment",
-		type : "POST",
-		data : {b_no:b_no},
-		success : function(data){
-			
-			if(data!="0"){
-				$(".tbTitle").append("[<a>"+data+"</a>]");
-			}else{
-				$(".tbTitle").append("");
-			}
-			
-		}
-		
-		
-	})
-	
-	
-});
 
-</script>	 -->
 
-	
-	
 	
 
 </body>

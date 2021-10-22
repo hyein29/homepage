@@ -9,8 +9,8 @@
 			<p>
 				<br>
 				상호 : 주식회사 김혜인 대표 : 김혜인 개인정보 보호 책임자 : 장준화<br>
-				TEL : 1661-1234 FAX : EMAIL : <a href="#" class="aTag">hyeinkim@ynhm.co.kr</a></a><br>
-				사업자등록번호 : 201-86-12345 통신판매업신고 : 제2021-대구서구-1111호 <a href="#" class="aTag">[사업자정보확인]</a><br>
+				TEL : 1661-1234 FAX : EMAIL : <a href="#" class="aTag notyet3">hyeinkim@ynhm.co.kr</a></a><br>
+				사업자등록번호 : 201-86-12345 통신판매업신고 : 제2021-대구서구-1111호 <a href="#" class="aTag notyet3">[사업자정보확인]</a><br>
 				주소 : 대구시 서구 서대구로 111 영남빌딩 10층<br><br>
 				
 				COPYRIGHT(C) ALL RIGHTS RESERVED.
@@ -19,11 +19,11 @@
 		
 		<div class="ftMenu">
 			<ul>
-				<li><a href="#">회사소개</a></li>
-				<li><a href="#">이용약관</a></li>
-				<li><a href="#">개인정보처리방침</a></li>
-				<li><a href="#">청소년보호방침</a></li>
-				<li><a href="#">고객센터</a></li>
+				<li><a href="#" class="notyet3">회사소개</a></li>
+				<li><a href="#" class="notyet3">이용약관</a></li>
+				<li><a href="#" class="notyet3">개인정보처리방침</a></li>
+				<li><a href="#" class="notyet3">청소년보호방침</a></li>
+				<li><a href="#" class="notyet3">고객센터</a></li>
 			</ul>
 		</div>
 		
@@ -34,7 +34,7 @@
 				<b>업무시간 </b>10:00~17:00<br>
 				<b>휴무안내 </b>토요일,일요일,공휴일
 			</p>
-			<div><button class="btn btn-outline-secondary btn-sm">교환,반품,환불 취소 안내</button></div>
+			<div><button class="btn btn-outline-secondary btn-sm notyet3">교환,반품,환불 취소 안내</button></div>
 		</div>
 		
 		<div class="ftCon2">
@@ -57,3 +57,12 @@
 	</div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+
+$(".notyet3").on("click", function(){
+	alert("기능 미구현");
+})
+
+</script>

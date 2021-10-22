@@ -60,11 +60,11 @@
 									</li>
 									
 									<li class="hdNavItem">
-										<a href="#">장바구니</a>
+										<a href="#" class="notyet">장바구니</a>
 									</li>
 									
 									<li class="hdNavItem">
-										<a href="#">주문배송</a>
+										<a href="#" class="notyet">주문배송</a>
 									</li>
 									
 									<li class="hdNavItem">
@@ -98,11 +98,11 @@
 							</li>
 							
 							<li class="hdNavItem">
-								<a href="#">장바구니</a>
+								<a href="/homepage2/login/loginPage.jsp">장바구니</a>
 							</li>
 							
 							<li class="hdNavItem">
-								<a href="#">주문배송</a>
+								<a href="/homepage2/login/loginPage.jsp">주문배송</a>
 							</li>
 							
 							<li class="hdNavItem">
@@ -126,8 +126,10 @@
 			
 			<div class="searchBox">
 				<form action="#">
-					<input type="search" name="search">
-					<input type="submit" value="검색">
+					<div style="margin-left: 10px;">
+						<input type="search" name="search" class="searchInput" placeholder="★ 아이즈원 주주의 PICK!  #한율유자크림 ★" autocomplete="off">
+						<button type="submit" value="검색" class="searchSubmitBtn notyet"><img src="/homepage2/icon/search_icon.png" style="width:25px;"></button>
+					</div>
 				</form>
 			</div>
 			
@@ -136,115 +138,12 @@
 	
 </div>
 
-	
+	<!-- 
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
 
+$(".searchSubmitBtn").on("click", function(){
+	alert("기능 미구현");
+})
 
-
-
-
-
-	
-<%-- <div class="hdWrap">	
-	<div class="hdTop">
-<%
-
-	if(session.getAttribute("u_id") != null){
-%>	
-		<div class="hdNavBar">
-			<nav class="test">
-			
-				<ul class="hdNav">
-				
-					<li class="hdNavItem">
-						<a href="/homepage2/logout">로그아웃</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="../userInfo/userInfoPage.jsp?u_id=<%= session.getAttribute("u_id") %>">마이페이지</a>
-						<a href="/homepage2/viewUserInfo">마이페이지</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="#">장바구니</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="#">주문배송</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="/homepage2/viewBoardList">고객센터</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		
-	</div>
-	
-
-<%
-		
-	}else if(session.getAttribute("u_id") == null){
-%>
-		
-	<div class="hdTop">
-	
-		<div class="hdNavBar">
-			<nav class="test">
-				<ul class="hdNav">
-					<li class="hdNavItem">
-						<a href="/homepage2/signUp/signUpPage.jsp">회원가입</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="/homepage2/login/loginPage.jsp">로그인</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="#">장바구니</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="#">주문배송</a>
-					</li>
-					
-					<li class="hdNavItem">
-						<a href="/homepage2/viewBoardList">고객센터</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		
-	</div>
-		
-<%		
-		
-	}
-
-%>
-
-
-	
-	
-	
-	
-	<div class="hdInner">
-	
-		<div class="logo">
-			<a href="/homepage2/home/homePage.jsp"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png"></a>
-		</div>
-		
-		<div class="searchBox">
-			<form action="#">
-				<input type="search" name="search">
-				<input type="submit" value="검색">
-			</form>
-		</div>
-		
-	</div>
-
-	
-	
-	
-
-</div> --%>
+</script> -->

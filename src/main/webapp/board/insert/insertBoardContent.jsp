@@ -9,65 +9,82 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 
 	<div class="insertWrap">
 		
-		<div class="insertTitle">
+		<div class="insertFormTitle">
 			<h3>게시물 작성</h3>
 		</div>
 		
-		
+		<c:forEach var="test" items="${userList}">
 		
 		<div class="insertForm">
 		
-			<form action="/homepage2/insertBoardContent" method="get">
+			<form action="/homepage2/insertBoardContent" method="post">
 				
-				<c:forEach var="test" items="${userList}">
-				
-				
-				<table>
-				
+				<table class="insertTable">
+					
 					<tr>
-						<td>제목</td>
-						<td><input type="text" name="b_title"></td>
+						<td class="insertTitle"><input type="text" name="b_title" placeholder=" 제목을 입력하세요." size="130px;" style="height: 30px;"></td>
 					</tr>
 					
 					<tr>
-						<td>작성자</td>
-						<td>
-							<input type="hidden" name="b_writer" value="${test.u_name}">
-							${test.u_name}
+						<td class="insertWriter">
+							<div class="insertWriterDiv">
+								<div>
+									<b>작성자 </b>
+									<span><input type="hidden" name="b_writer" value="${test.u_name}">${test.u_name}</span>
+								</div>
+							</div>
 						</td>
 					</tr>
 					
 					<tr>
-						<td>암호</td>
-						<td>
-							<label>비밀글<input type="checkbox" name="checkbox" value="1"></label>
-							<input type="password" name="b_pw" placeholder="숫자네자리">
+						<td class="insertPassword">	
+							<div>						
+								<div class="pwCheck">
+									<div>
+										<label>비밀글 <input type="checkbox" name="checkbox" value="1"></label>
+									
+										<input type="password" name="b_pw" placeholder="숫자네자리" style="margin-left: 5px;">
+									</div>
+								</div>	
+							
+							</div>
 						</td>
 					</tr>
 					
 					<tr>
-						<td colspan="2"><textarea rows="5" cols="30" name="b_content"></textarea></td>
+						<td><textarea rows="15" cols="132" name="b_content"></textarea></td>
 					</tr>
 					
+				
 					
 					<tr>
-						<td colspan="2"><input type="submit" value="작성완료"></td>
+						<td class="insertBtns">
+						<div class="insertBtnsDiv">
+							<div class="insertSubmitBtn">
+								<input type="submit" value="작성완료" class="btn btn-dark btn-sm">
+							</div>
+							<div class="insertCancelBtn">
+								<input type="button" value="작성취소" onclick="location.href='/homepage2/viewBoardList'" class="btn btn-outline-dark btn-sm">
+							</div>
+						</div>
+						</td>
+						
 					</tr>
 					
 				</table>
 				
-				</c:forEach>
 			
 			</form>
 			
-			<button onclick="location.href='/homepage2/viewBoardList'">작성취소</button>
 		
 		</div>
 		
-		
+		</c:forEach>
 		
 	</div>	
 	

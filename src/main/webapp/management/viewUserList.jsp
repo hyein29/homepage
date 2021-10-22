@@ -93,7 +93,7 @@
 						</c:if>
 						<c:if test="${users.u_grade eq 'admin'}">
 						<td>
-							<select id= class="u_grade""u_grade" data-owner-id="${users.u_id}">
+							<select class="u_grade" id="u_grade" data-owner-id="${users.u_id}">
 								<option>silver</option>
 								<option>gold</option>
 								<option>vip</option>

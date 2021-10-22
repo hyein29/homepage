@@ -39,12 +39,10 @@ public class LoginProcess extends HttpServlet {
 		
 		try {
 			String result = dao.login(userId, userPw);
-			userList = dao.viewUserinfo(userId);
-			String userGrade = userList.get(0).getU_grade();
-			
 			
 			 if(result.equals("success")) { 
-				 
+				 userList = dao.viewUserinfo(userId);
+				 String userGrade = userList.get(0).getU_grade();
 				 session.setAttribute("u_id", userId);
 				 session.setAttribute("u_grade", userGrade);
 				 
@@ -54,70 +52,10 @@ public class LoginProcess extends HttpServlet {
 				 response.getWriter().print(result);
 			 }
 			
-			
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		
-//		String userId = request.getParameter("u_id");
-//		String userPw = request.getParameter("u_pw");
-//		
-//		HttpSession session = request.getSession();
-//		
-//		UserDAO dao = new UserDAO();
-//		
-//		try {
-//			String result = dao.login(userId, userPw);
-//			String userGrade = dao.getUserGrade(userId);
-//			
-//			 if(result.equals("success")) { 
-//				 
-//				 session.setAttribute("u_id", userId);
-//				 session.setAttribute("u_grade", userGrade);
-//				 
-//				 response.getWriter().print(result);
-//				 
-//			 }else {
-//				 response.getWriter().print(result);
-//			 }
-//			
-//			
-//		} catch (NamingException | SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
-//		String userId = request.getParameter("u_id");
-//		String userPw = request.getParameter("u_pw");
-//		
-//		HttpSession session = request.getSession();
-//		
-//		UserDAO dao = new UserDAO();
-//		
-//		try {
-//			String result = dao.login(userId, userPw);
-//			
-//			
-//			 if(result.equals("success")) { 
-//				 session.setAttribute("u_id", userId); 
-//				 response.getWriter().print(result);
-//				 
-//			 }else {
-//				 response.getWriter().print(result);
-//			 }
-//			
-//			
-//		} catch (NamingException | SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		
 		
 	}

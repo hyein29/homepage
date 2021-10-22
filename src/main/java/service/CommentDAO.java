@@ -49,8 +49,8 @@ public class CommentDAO {
 				dto.setC_no(rs.getString("c_no"));
 				dto.setC_writer(rs.getString("c_writer"));
 				dto.setC_content(rs.getString("c_content"));
-				dto.setC_reg_date(rs.getString("c_reg_date"));
-				dto.setC_update_date(rs.getString("c_update_date"));
+				dto.setC_reg_date(rs.getString("c_reg_date").substring(0, 16));
+				dto.setC_update_date(rs.getString("c_update_date").substring(0, 16));
 				dto.setB_no(rs.getString("b_no"));
 				dto.setU_id(rs.getString("u_id"));
 				
@@ -137,6 +137,8 @@ public class CommentDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.executeUpdate();
+			
+			init(conn,pstmt,rs);
 				
 		} catch (SQLException ex) {
 			System.out.println("댓글 삭제 실패");
@@ -211,6 +213,33 @@ public class CommentDAO {
 //		
 //	}
 
-	
+	public void init(Connection conn, PreparedStatement pstmt, ResultSet rs) throws SQLException {
+
+	      int count = 0;
+	      String sql = "select count(*) as 'count' from comment";
+
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+
+	         if (rs.next()) {
+	            count = rs.getInt("count");
+	         }
+
+	         String sqlList[] = { "SET @CNT = 0",
+	               "UPDATE comment SET comment.c_no = @CNT:=@CNT+1", 
+	               "ALTER TABLE comment AUTO_INCREMENT=" + (count + 1) };
+
+	         for (int i = 0; i < 3; i++) {
+	            pstmt = conn.prepareStatement(sqlList[i]);
+	            pstmt.executeUpdate();
+	         }
+
+	      } finally {
+	         if (rs != null) {
+	            rs.close();
+	         }
+	      }
+	   }
 
 }

@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 	<div class="userInfoWrap">
 		
@@ -19,14 +20,14 @@
 		
 		<c:forEach var="test" items="${userList}">
 		
-		<div class="updateUserInfoTable">
+		<div class="updateUserInfoWrap">
 			
 			<form action="/homepage2/updateUserInfo" method="post" class="updateUserInfoForm">
 				<input type="hidden" name="u_no" value="${test.u_no}">
 			
-				<table>
+				<table class="updateUserInfoTable">
 					<tr>
-						<td>아이디</td>
+						<td class="td1">아이디</td>
 						<td>
 							<input type="hidden" name="u_id" value="${test.u_id}" id="u_id">
 							${test.u_id}
@@ -46,9 +47,9 @@
 					<tr>
 						<td>생년월일</td>
 						<td>
-							<input type="text" name="u_birth1" value="${fn:substring(test.u_birth,0,4)}">년
-							<input type="text" name="u_birth2" value="${fn:substring(test.u_birth,5,7)}">월
-							<input type="text" name="u_birth3" value="${fn:substring(test.u_birth,8,10)}">일
+							<input type="text" name="u_birth1" value="${fn:substring(test.u_birth,0,4)}" size="2px">년 
+							<input type="text" name="u_birth2" value="${fn:substring(test.u_birth,5,7)}" size="1px">월 
+							<input type="text" name="u_birth3" value="${fn:substring(test.u_birth,8,10)}" size="1px">일 
 						</td>
 					</tr>
 					
@@ -56,12 +57,12 @@
 						<td>성별</td>
 						<td>
 							<c:if test="${test.u_gender eq 'm'}">
-								<input type="radio" name="u_gender" value="m" checked="checked">남
-								<input type="radio" name="u_gender" value="f">여
+								<input type="radio" name="u_gender" value="m" checked="checked"> 남자
+								<input type="radio" name="u_gender" value="f" style="margin-left: 10px;"> 여자
 							</c:if>
 							<c:if test="${test.u_gender eq 'f'}">
-								<input type="radio" name="u_gender" value="m">남
-								<input type="radio" name="u_gender" value="f" checked="checked">여
+								<input type="radio" name="u_gender" value="m"> 남자
+								<input type="radio" name="u_gender" value="f" checked="checked" style="margin-left: 10px;"> 여자
 							</c:if>
 						</td>
 					</tr>
@@ -93,8 +94,8 @@
 								</select>-
 							</c:if>
 						
-							<input type="text" name="u_tel2" required size="3px" value="${fn:substring(test.u_tel,4,8)}">-
-							<input type="text" name="u_tel3" required size="3px" value="${fn:substring(test.u_tel,9,13)}">
+							<input type="text" name="u_tel2" required size="3px" value="${fn:substring(test.u_tel,4,8)}" size="2px">-
+							<input type="text" name="u_tel3" required size="3px" value="${fn:substring(test.u_tel,9,13)}" size="2px">
 						</td>
 					</tr>
 					
@@ -105,9 +106,20 @@
 					
 					<tr>
 						<td colspan="2">
-							<input type="submit" value="수정완료">
-							<!-- <input type="button" value="탈퇴하기" id="deleteBtn"> -->
-							
+							<div class="updateBtns">
+								<div>
+									<input type="submit" value="수정완료" class="btn btn-dark btn-sm">
+								</div>
+								
+								<div>
+									<input type="button" value="뒤로가기" onclick="location.href='/homepage2/viewUserInfo'" class="btn btn-warning btn-sm">
+								</div>
+								
+								<div>
+									<input type="button" value="탈퇴하기" id="deleteBtn" class="btn btn-outline-dark btn-sm">
+								</div>
+									<!-- <input type="button" value="탈퇴하기" id="deleteBtn"> -->
+							</div>
 						</td>
 					</tr>
 					
@@ -117,8 +129,8 @@
 		</div>	
 		
 		</c:forEach>
-		<button onclick="location.href='/homepage2/viewUserInfo'">뒤로가기</button>
-		<button id="deleteBtn">탈퇴하기</button>
+		<!-- <button onclick="location.href='/homepage2/viewUserInfo'">뒤로가기</button>
+		<button id="deleteBtn">탈퇴하기</button> -->
 		
 			
 	</div>		
@@ -129,7 +141,7 @@
 		
 		$("#deleteBtn").on("click", function(){
 			/* var u_id = $("#u_id").val(); */
-			var u_pw = prompt("비밀번호를 입력하세요");
+			/* var u_pw = prompt("비밀번호를 입력하세요");
 			
 			if(u_pw == $("#u_pw").val()){
 				if(confirm("정말 탈퇴하시겠습니까?")){
@@ -142,7 +154,15 @@
 				
 			}else{
 				alert("비밀번호가 일치하지 않습니다.");
+			} */
+			
+			if(confirm("정말 탈퇴하시겠습니까?")){
+				alert("탈퇴가 처리되었습니다.");
+				location.href="/homepage2/deleteUser";
+			}else{
+				alert("취소되었습니다.");
 			}
+			
 			
 		})
 		

@@ -24,9 +24,6 @@ public class DeleteUserProcess extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("u_id"));
-		
-		
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("u_id");
 		

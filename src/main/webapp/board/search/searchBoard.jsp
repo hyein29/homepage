@@ -11,27 +11,10 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-
 <c:set var="sessionId" value="${sessionScope.u_id}"/>
 <c:set var="sessionGrade" value="${sessionScope.u_grade}"/>
 
-<%-- <c:out value="${sessionId}"/> --%>
-
-<%-- <c:if test="${test == null}">
-	
-	<c:out value="세션없음"/>
-</c:if>
-
-<c:if test="${test != null}">
-	<c:out value="${sessionScope.u_id}"/>
-</c:if> --%>
-
-
-
-
-
-
-
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
 
 	<div id="boardWrap">
@@ -40,37 +23,8 @@
 			<h3>게시판</h3>
 		</div>
 		
-			
-		<%-- <div class="boardSearchForm">
-			<form action="/homepage2/searchBoardList" method="get">
-				<div class="boardSearchBox">
-					<c:if test="${searchOption eq 'b_writer'}">
-					<div><input type="radio" name="opt" value="b_writer" checked="checked" required="required"> 이름</div> <br>
-					<div><input type="radio" name="opt" value="b_title"> 제목</div> <br>
-					<div><input type="radio" name="opt" value="b_content"> 내용</div> <br>
-					</c:if>
-					
-					<c:if test="${searchOption eq 'b_title'}">
-					<div><input type="radio" name="opt" value="b_writer" required="required"> 이름</div> <br>
-					<div><input type="radio" name="opt" value="b_title" checked="checked"> 제목</div> <br>
-					<div><input type="radio" name="opt" value="b_content"> 내용</div> <br>
-					</c:if>
-					
-					<c:if test="${searchOption eq 'b_content'}">
-					<div><input type="radio" name="opt" value="b_writer" required="required"> 이름</div> <br>
-					<div><input type="radio" name="opt" value="b_title"> 제목</div> <br>
-					<div><input type="radio" name="opt" value="b_content" checked="checked"> 내용</div> <br>
-					</c:if>
-				
-					<input type="text" name="boardSearchVal" value="${searchValue}">
-					<input type="submit" value="검색">
-				</div>
-			</form>
-		</div> --%>
-		
-		
-		<div class="boardTable">
-			<table>
+		<div class="boardTableDiv">
+			<table class="boardTable">
 			
 				<thead>
 					<tr>
@@ -119,14 +73,58 @@
 			
 			
 		<c:forEach var="search" items="${searchBoardList}">
+				<fmt:formatDate var="b_reg_date" value="${search.b_reg_date}" pattern="yyyy-MM-dd"/>
+				<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
+						
+				<fmt:formatDate var="b_reg_dd" value="${search.b_reg_date}" pattern="yyyyMMdd"/>
+				<fmt:formatDate var="today_dd" value="${now}" pattern="yyyyMMdd"/>
+				<fmt:parseNumber var="subtract_dd" value="${today_dd - b_reg_dd}" integerOnly="true" />
+				
+				<fmt:parseNumber var="diffhour" value="${search.diff_date_r/3600000}" integerOnly="true"/>
+				<fmt:parseNumber var="diffmin" value="${search.diff_date_r/60000}" integerOnly="true"/>
+				<fmt:parseNumber var="diffsec" value="${search.diff_date_r/1000}" integerOnly="true"/>
+		
 				<input type="hidden" id="b_no" value="${search.b_no}">
 		
 				<tbody>
 					<tr>
 						<td class="tbNo"><c:out value="${search.b_no}"/></td>
 						
-						
 						<c:if test="${search.b_pw != null}">
+						<td><img src = "/homepage2/icon/lock.gif"></td>
+						<td class="tbTitle">
+							<div style="margin-left: 50px">
+								<c:choose>
+									<c:when test="${b_reg_date == today}">
+										<a href="/homepage2/viewBoardPassword?b_no=${search.b_no}">${search.b_title} [${search.c_cnt}] <img src="/homepage2/icon/new.gif"></a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="/homepage2/viewBoardPassword?b_no=${search.b_no}">${search.b_title} [${search.c_cnt}] </a>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</td>
+						</c:if>
+						
+						<c:if test="${search.b_pw == null}">
+						<td></td>
+						<td class="tbTitle">
+							<div style="margin-left: 50px">
+								<c:choose>
+									<c:when test="${b_reg_date == today}">
+										<a href="/homepage2/viewBoardContent?b_no=${search.b_no}">${search.b_title} [${search.c_cnt}] <img src="/homepage2/icon/new.gif"></a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="/homepage2/viewBoardContent?b_no=${search.b_no}">${search.b_title} [${search.c_cnt}]</a>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</td>
+						</c:if>
+						
+						<%-- <c:if test="${search.b_pw != null}">
 						<td><img src = "/homepage2/icon/lock.gif"></td>
 						<td class="tbTitle"><a href="/homepage2/viewBoardPassword?b_no=${search.b_no}&b_pw=${search.b_pw}">${search.b_title} [${search.c_cnt}]</a></td>
 						</c:if>
@@ -134,7 +132,7 @@
 						<c:if test="${search.b_pw == null}">
 						<td></td>
 						<td class="tbTitle"><a href="/homepage2/viewBoardContent?b_no=${search.b_no}">${search.b_title} [${search.c_cnt}]</a></td>
-						</c:if>
+						</c:if> --%>
 						
 						
 						<c:choose>
@@ -149,19 +147,6 @@
 						
 						
 						<td class="tbDate">
-							<fmt:formatDate var="b_reg_date" value="${search.b_reg_date}" pattern="yyyy-MM-dd"/>
-							<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
-							
-							<fmt:formatDate var="b_reg_dd" value="${search.b_reg_date}" pattern="yyyyMMdd"/>
-							<fmt:formatDate var="today_dd" value="${now}" pattern="yyyyMMdd"/>
-							<fmt:parseNumber var="subtract_dd" value="${today_dd - b_reg_dd}" integerOnly="true" />
-							
-						
-							<fmt:parseNumber var="diffhour" value="${search.diff_date_r/3600000}" integerOnly="true"/>
-							<fmt:parseNumber var="diffmin" value="${search.diff_date_r/60000}" integerOnly="true"/>
-							<fmt:parseNumber var="diffsec" value="${search.diff_date_r/1000}" integerOnly="true"/>
-							
-							
 							
 							<c:choose>
 								<c:when test="${b_reg_date == today}">

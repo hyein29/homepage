@@ -1,15 +1,78 @@
+
 .content1{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-top: 50px;
+	margin-bottom: 40px;
 }
 
 .content1 img{
 	width: 1200px;
 }
 
+.content2{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-.contentWrap, .loginWrap{
+.images{
+	width: 1200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.img1 img, .img2 img{
+	width: 550px;
+}
+
+
+/* .contentWrap, .loginWrap{
 	height: 800px;
+} */
+
+.contentWrap{
+	height: 500px;
+}
+
+.passwordWrap{
+	height: 300px;
+	font-size: small;
+}
+
+.passwordTitle{
+	text-align: center;
+	margin-top: 80px;
+}
+
+.pwBtns{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 5px;
+}
+.pwBtn1, .pwBtn2{
+	width: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.passwordForm{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.passwordBox{
+	width: 300px;
+}
+
+.pwInput{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -292,6 +292,8 @@ public class UserDAO {
 			
 			pstmt.executeUpdate();
 			
+			init(conn, pstmt, rs);			
+			init2(conn, pstmt, rs);			
 			
 			
 		} catch (Exception e) {
@@ -348,6 +350,64 @@ public class UserDAO {
 		}
 		return userList;
 	}
+	
+	public void init(Connection conn, PreparedStatement pstmt, ResultSet rs) throws SQLException {
+
+	      int count = 0;
+	      String sql = "select count(*) as 'count' from board";
+
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+
+	         if (rs.next()) {
+	            count = rs.getInt("count");
+	         }
+
+	         String sqlList[] = { "SET @CNT = 0",
+	               "UPDATE board SET board.b_no = @CNT:=@CNT+1", 
+	               "ALTER TABLE board AUTO_INCREMENT=" + (count + 1) };
+
+	         for (int i = 0; i < 3; i++) {
+	            pstmt = conn.prepareStatement(sqlList[i]);
+	            pstmt.executeUpdate();
+	         }
+
+	      } finally {
+	         if (rs != null) {
+	            rs.close();
+	         }
+	      }
+	   }
+	
+	public void init2(Connection conn, PreparedStatement pstmt, ResultSet rs) throws SQLException {
+
+	      int count = 0;
+	      String sql = "select count(*) as 'count' from comment";
+
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+
+	         if (rs.next()) {
+	            count = rs.getInt("count");
+	         }
+
+	         String sqlList[] = { "SET @CNT = 0",
+	               "UPDATE comment SET comment.c_no = @CNT:=@CNT+1", 
+	               "ALTER TABLE comment AUTO_INCREMENT=" + (count + 1) };
+
+	         for (int i = 0; i < 3; i++) {
+	            pstmt = conn.prepareStatement(sqlList[i]);
+	            pstmt.executeUpdate();
+	         }
+
+	      } finally {
+	         if (rs != null) {
+	            rs.close();
+	         }
+	      }
+	   }
 	
 	
 

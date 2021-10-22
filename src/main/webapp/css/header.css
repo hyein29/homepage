@@ -76,3 +76,34 @@
 .logo img{
 	width: 300px;
 }
+
+.searchBox{
+	border: 3px solid #b8d169;
+	border-radius: 20px;
+	height: 45px;
+	width: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.searchInput{
+	border: none;
+	width: 530px;
+	font-size: small;
+}
+.searchInput:focus {
+	outline: none;
+	width: 530px;
+}
+.searchSubmitBtn{
+	border: none;
+	outline: none;
+	background-color: white;
+	cursor: pointer;
+}
+.searchSubmitBtn:focus{
+	border: none;
+	outline: none;
+	background-color: white;
+}
+

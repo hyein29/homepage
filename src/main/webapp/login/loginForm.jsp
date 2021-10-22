@@ -7,6 +7,8 @@
 <title>로그인</title>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 
 	<div class="loginWrap">
 		<div class="loginForm">
@@ -22,7 +24,7 @@
 	      </button>
 	
 	      <div class="bottomText">
-	        Don't you have ID? <a href="/signUp/signUpPage.jsp">sign up</a>
+	        Don't you have ID? <a href="/homepage2/signUp/signUpPage.jsp">sign up</a>
 	      </div>
 	    </div>
 	</div>

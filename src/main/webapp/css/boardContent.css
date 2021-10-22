@@ -1,31 +1,121 @@
-
-.conTable table{
-	border: 2px solid black;
-	width: 500px;
+.conTableDiv{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* border: 1px dotted red; */
+	font-size: small;
+	margin-top: 35px;
 }
 
+.conTable{
+	/* border: 2px solid black; */
+	width: 1000px;
+}
+
+/* .conTable th, .conTable td{
+	border: 1px solid black;
+} */
+
 .conTitle{
-	border: 1px solid red;
+	font-size: large;
+	font-weight: bold;
+	height: 40px;
 	text-align: center;
+	border-top: 1px solid black;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.conTdWrap{
+	height: 30px;
+	margin-bottom: 30px;
+}
+
+.conTdWrap{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.conWriter, .conRegDate, .conViews{
+	margin-left: 5px;
+	margin-right: 15px;
+}
+
+.submitLink{
+	background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+}
+
+.conBtnsDiv{
+	/* border: 1px dotted blue; */
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.conBtns{
+	/* border: 1px solid black; */
+	width: 1000px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .conCon{
-	height: 200px;
+	padding: 5px;
+	padding-bottom: 50px;
 }
 
-.conTable table th, .conTable table td{
-	border: 1px solid blue;
-	text-align: center;
-}
 
-.cmtTable1 table th, .cmtTable1 table td{
-	border: 1px solid red;
-	text-align: center;
-}
 
-.cmtTable2 table th, .cmtTable2 table td{
-	border: 1px solid blue;
+
+
+
+.cmtWrap{
+	/* border: 1px dotted red; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: small;
+}
+
+.cmtTablesDiv{
+	/* border: 1px dotted black; */
+	width: 1000px;
+}
+
+/* .cmtTable1Div, .cmtTable2Div{
+	border: 1px solid green;
+} */
+.cmtTable2Div{
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+
+.cmtTable1{
+	margin-top: 3px;
+	background-color: #f1f1f1;
+}
+
+.cmtTable2 th, .cmtTable2 td{
+	font-size: small;
+	height: 30px;
+}
+
+.cmt2Con{
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid black;
+	text-align: left;
+	padding-left: 10px;
 }
 
 .cmt2No{
@@ -34,32 +124,41 @@
 }
 
 .cmt2Writer{
-	width: 150px;
+	border-top: 1px solid black;
+	width: 500px;
 	padding-left: 10px;
 }
 .cmt2Date{
-	width: 300px;
+	margin-left: 10px;
+	color: grey;
 }
 .cmt2Up{
-	width: 90px;
+	border-top: 1px solid black;
+	width: 40px;
 	text-align: center;
 }
-.cmt2Del, .cmt2Can{
-	width: 90px;
+.cmt2Del{
+	border-top: 1px solid black;
+	width: 40px;
 	text-align: center;
 }
 
-.cmt2Con{
-	text-align: left;
-	padding-left: 10px;
+.cmt2Del a, .cmt2Up a{
+	text-decoration: none;
+	color: black;
+}
+
+.cmt2Del a:hover, .cmt2Up a:hover{
+	text-decoration: none;
+	color: black;
 }
 
 
-.submitLink{
-	background-color: transparent;
-    text-decoration: underline;
-    border: none;
 
-    cursor: pointer;
-}
+
+
+
+
+
+
 

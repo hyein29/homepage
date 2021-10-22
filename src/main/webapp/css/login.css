@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
 .loginWrap{
-	height: 800px;
+	height: 470px;
 	font-size: small;
 }
 
 .loginForm{
+	margin-top: 40px;
   position:absolute;
   width:300px;
   height:400px;

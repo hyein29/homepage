@@ -12,7 +12,7 @@
 
 <c:set var="sessionId" value="${sessionScope.u_id}"/>
 <c:set var="sessionGrade" value="${sessionScope.u_grade}"/>
-<c:out value="${sessionScope.u_grade}"></c:out>
+<%-- ${sessionGrade} --%>
 
 <c:if test="${sessionId == null}">
 	<c:set var="sessionId" value="null"></c:set>
@@ -23,32 +23,35 @@
 		<input type="hidden" name="b_views" id="b_views" value="${content.b_views}">
 		<input type="hidden" id="session_id" value="${sessionId}">
 		<input type="hidden" id="session_grade" value="${sessionGrade}">
-		${content.b_no}
+		<%-- ${content.b_no}
 		${content.u_id}
-		<c:out value="${sessionId}"></c:out>
+		${sessionId} --%>
 	</c:forEach>
 	
 
-		
+	<div class="cmtWrap">
+	
+	<div class="cmtTablesDiv">
+	
 		
 	<c:if test="${sessionId =! null}">
 	
 		<c:forEach var="user" items="${userList}">	
-			<div class="cmtTable1">
+			<div class="cmtTable1Div">
 		
 			<input type="hidden" name="c_writer" id="c_writer" value="${user.u_name}">
 			<input type="hidden" name="u_id" id="u_id" value="${user.u_id}">
 			
-				<table>
+				<table class="cmtTable1">
 					<tr>
-						<td><b>${user.u_name}</b></td>
+						<td style="padding: 5px; padding-left: 10px;"><b>${user.u_name}</b></td>
 						<td></td>
 						<td></td>
 					</tr>
 				
 					<tr>
-						<td colspan="2"><textarea rows="2" cols="50" name="c_content" id="c_content" placeholder="타인을 배려하는 마음을 담아 댓글을 달아주세요." required="required"></textarea></td>
-						<td><button id="insertCommentBtn">등록</button> </td>
+						<td colspan="2" style="padding: 10px; padding-top: 3px;"><textarea rows="3" cols="80" name="c_content" id="c_content" placeholder="타인을 배려하는 마음을 담아 댓글을 달아주세요." required="required" class="cmt1Con"></textarea></td>
+						<td style="padding-right: 10px;"><button id="insertCommentBtn" class="btn btn-dark btn-sm">등록</button> </td>
 					</tr>
 					
 				</table>
@@ -60,13 +63,15 @@
 	</c:if>
 	
 	
-			<div class="cmtTable2">
-				<table id="cmtListTable">
+			<div class="cmtTable2Div">
+				<table id="cmtListTable" class="cmtTable2">
 				
 					
 					
 				</table>
 			</div>
+	</div>			
+	</div>			
 		
 			
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -102,10 +107,10 @@ $(document).ready(function(){
 				
 				tableElement += "<td class='cmt2Writer'><b>"
 							+ c_writer
-							+ "</b></td>"
-							+ "<td class='cmt2Date'>" 
+							+ "</b>"
+							+ "<span class='cmt2Date'>"
 							+ c_reg_date 
-							+ "</td>";
+							+ "</span></td>";
 							
 							
 								
@@ -136,29 +141,19 @@ $(document).ready(function(){
 					}   
 				})
 				
+				
+				
 				$(document).on("click", "#"+update_c_no, function(){
 					
+					alert("기능 미구현");
 					
-					
-					if(confirm("정말 삭제하시겠습니까?")){
-						alert("댓글이 삭제되었습니다.");
-						location.href="/homepage2/deleteBoardComment?b_no="+b_no+"&b_views="+b_views+"&c_no="+delete_c_no;
-						/* location.href="/homepage2/deleteBoardContent?b_no="+b_no; */
-					}else{
-						alert("취소되었습니다.");
-					}   
-				})
-				
-				
-				
-				/* $(document).on("click", "#"+update_c_no, function(){
-					if(confirm("수정하시겠습니까?")){
+					/* if(confirm("수정하시겠습니까?")){
 						alert("댓글이 수정되었습니다.");
 						location.href="/homepage2/updateBoardComment?b_no="+b_no+"&b_views="+b_views+"&c_no="+update_c_no+"&c_content="+c_content;
 					}else{
 						alert("취소되었습니다.");
-					}   
-				}) */
+					}  */  
+				})
 				
 			})
 			

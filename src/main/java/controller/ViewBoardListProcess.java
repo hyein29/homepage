@@ -46,7 +46,24 @@ public class ViewBoardListProcess extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		BoardDAO dao = new BoardDAO();
+		List<BoardDTO> boardList;
+
 		
+		try {
+			boardList = dao.viewBoardList();
+			request.setAttribute("boardList", boardList);
+				
+			String page = "/board/view/viewBoardPage.jsp";
+				
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+				
+				
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

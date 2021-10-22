@@ -70,6 +70,44 @@ public class ViewBoardContentProcess extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String boardNo = request.getParameter("b_no");
+		
+		BoardDAO dao = new BoardDAO();
+		
+		List<BoardDTO> boardContentList;
+		
+		String page = "";
+		
+		if(request.getParameter("update") != null) {
+			page = "/board/update/updateBoardContentPage.jsp";
+		}else {
+			if(request.getParameter("updateComment") != null) {
+				page = "/board/viewContent/comment/commentUpdatePage.jsp";
+			}
+			page = "/board/viewContent/viewBoardContentPage.jsp";
+		}
+		
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("u_id");
+		
+		UserDAO user_dao = new UserDAO();
+		
+		List<UserDTO> userList;
+		
+		try {
+			userList = user_dao.viewUserinfo(userId);
+			request.setAttribute("userList", userList);
+			
+			boardContentList = dao.boardViewContent(boardNo);
+			request.setAttribute("boardContentList", boardContentList);
+				
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+				
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

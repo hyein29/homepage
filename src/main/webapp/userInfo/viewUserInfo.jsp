@@ -27,9 +27,7 @@
 			<table>
 				<tr>
 					<td>안녕하세요. <b><c:out value="${test.u_name}"/>(<c:out value="${test.u_id}"/></b>)회원님</td>
-					<%-- <td><button onclick="location.href='/homepage2/userInfo/updateUserInfoPage.jsp?u_id=${test.u_id}'">정보수정</button></td> --%>
- 					<%-- <td><button onclick="location.href='/homepage2/viewUserInfo?u_id=${test.u_id}&modify=1'">정보수정</button></td> --%>
- 					<td><button id="updateUserInfoBtn">정보수정</button></td>
+ 					<td><button id="updateUserInfoBtn" class="btn btn-outline-success btn-sm">정보수정</button></td>
 				</tr>
 				
 				<tr>

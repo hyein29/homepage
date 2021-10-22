@@ -1,14 +1,45 @@
+.userInfoWrap{
+	margin-bottom: 100px;
+}
+
 .userInfoTitle{
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	text-align: center;
+	margin-top: 30px;
 }
 
 
 .userInfoTable{
-	border: 1px solid blue;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-top: 50px;
 }
+
+.updateUserInfoWrap{
+	font-size: small;
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.updateUserInfoTable td{
+	padding: 8px;
+}
+
+.td1{
+	width: 80px;
+}
+
+.updateBtns{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.updateBtns div{
+	margin-left: 10px;
+}
+
+

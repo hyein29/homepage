@@ -25,12 +25,24 @@ public class InsertBoardContentProcess extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
+		
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("u_id");
 		String boardTitle = request.getParameter("b_title");
 		String boardWriter = request.getParameter("b_writer");
 		String boardPw = request.getParameter("b_pw");
 		String boardContent = request.getParameter("b_content");
+		
+		boardTitle = XssReplace(boardTitle);
+		boardContent = XssReplace(boardContent);
 		
 		String checkBox = null;
 		
@@ -50,37 +62,25 @@ public class InsertBoardContentProcess extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
 			
-			
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		
 	}
+	
+	public static String XssReplace(String str) {
+	      
+      str = str.replaceAll("&", "&amp;");
+      str = str.replaceAll("\"", "&quot;");
+      str = str.replaceAll("'", "&apos;");
+      str = str.replaceAll("<", "&lt;");
+      str = str.replaceAll(">", "&gt;");
+      str = str.replaceAll("\r", "<br>");
+      str = str.replaceAll("\n", "<p>");
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		System.out.println("aaa");
-		
-//		BoardDAO dao = new BoardDAO();
-//		
-//		List<BoardDTO> boardList;
-//		
-//		try {
-//			boardList = dao.viewBoardList();
-//			request.setAttribute("boardList", boardList);
-//			System.out.println(boardList);
-//			
-//			String page = "/board/view/viewBoardPage.jsp";
-//			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-//			dispatcher.forward(request, response);
-//			
-//			
-//		} catch (NamingException | SQLException e) {
-//			e.printStackTrace();
-//		}
-	}
+      return str;
+   }
 
 }

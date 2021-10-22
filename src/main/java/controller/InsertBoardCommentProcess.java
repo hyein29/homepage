@@ -29,14 +29,14 @@ public class InsertBoardCommentProcess extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("u_id");
 		String commentWriter = request.getParameter("c_writer");
 		String commentContent = request.getParameter("c_content");
 		String boardNo = request.getParameter("b_no");
-		System.out.println(userId+ commentWriter+ commentContent+ boardNo);
+//		System.out.println(userId+ commentWriter+ commentContent+ boardNo);
 		
+		commentContent = XssReplace(commentContent);
 		
 		CommentDAO dao = new CommentDAO();
 		
@@ -47,7 +47,19 @@ public class InsertBoardCommentProcess extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
+	public static String XssReplace(String str) {
+	      
+	      str = str.replaceAll("&", "&amp;");
+	      str = str.replaceAll("\"", "&quot;");
+	      str = str.replaceAll("'", "&apos;");
+	      str = str.replaceAll("<", "&lt;");
+	      str = str.replaceAll(">", "&gt;");
+	      str = str.replaceAll("\r", "<br>");
+	      str = str.replaceAll("\n", "<p>");
+
+	      return str;
+	   }
 
 }
