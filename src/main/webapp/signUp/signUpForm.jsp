@@ -25,25 +25,25 @@
 				
 					<tr>
 						<td class="td1">아이디</td>
-						<td class="td2"><input type="text" id="u_id" name="u_id" required minlength="4"></td>
+						<td class="td2"><input type="text" id="u_id" name="u_id" required minlength="4" autocomplete="off"></td>
 						<td class="td3"><button id="checkId" class="btn btn-light btn-sm">중복체크</button></td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호</td>
-						<td><input type="password" id="u_pw" name="u_pw" required minlength="8"></td>
+						<td><input type="password" id="u_pw" name="u_pw" required minlength="8" autocomplete="off"></td>
 						<td></td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호 확인</td>
-						<td><input type="password" id="u_pw2" required></td>
+						<td><input type="password" id="u_pw2" required autocomplete="off"></td>
 						<td><div id="alertPw"></div></td>
 					</tr>
 					
 					<tr>
 						<td>이름</td>
-						<td><input type="text" id="u_name" name="u_name" required></td>
+						<td><input type="text" id="u_name" name="u_name" required autocomplete="off"></td>
 						<td></td>
 					</tr>
 					
@@ -59,8 +59,8 @@
 					<tr>
 						<td>성별</td>
 						<td>
-							<label><input type="radio" name="u_gender" id="u_gender" value="m" class="gender"> 남자</label>
-							<label><input type="radio" name="u_gender" id="u_gender" value="f" class="gender" style="margin-left: 10px;"> 여자</label>
+							<label><input type="radio" name="u_gender" id="u_gender" value="m" class="male"> 남자</label>
+							<label><input type="radio" name="u_gender" id="u_gender" value="f" class="female" style="margin-left: 10px;"> 여자</label>
 						</td>
 						<td></td>
 					</tr>
@@ -73,8 +73,8 @@
 								<option>011</option>
 								<option>016</option>
 							</select>-
-							<input type="text" name="u_tel2" id="u_tel2" required size="2px">-
-							<input type="text" name="u_tel3" id="u_tel3" required size="2px">
+							<input type="text" name="u_tel2" id="u_tel2" required size="2px" autocomplete="off">-
+							<input type="text" name="u_tel3" id="u_tel3" required size="2px" autocomplete="off">
 						</td>
 						<td></td>
 					</tr>
@@ -82,7 +82,7 @@
 					<tr>
 						<td>이메일</td>
 						<td colspan="2">
-							<input type="text" name="u_email1" id="u_email1" required size="10px"> @
+							<input type="text" name="u_email1" id="u_email1" required size="10px" autocomplete="off"> @
 							<input type="text" name="u_email2" id="u_email2" autocomplete="off" readonly value="naver.com">
 							
 							<select name="u_email_domain" id="u_email_domain">
@@ -242,8 +242,18 @@
 			$("#u_pw").focus();
 			return;
 		}
+		if(u_pw.length < 4){
+			alert("비밀번호를 4자 이상 입력해주세요.");
+			$("#u_pw").focus();
+			return;
+		}
 		if(u_pw2 == null || u_pw2 == undefined || u_pw2 == ""){
 			alert("비밀번호 확인을 입력해주세요.");
+			$("#u_pw2").focus();
+			return;
+		}
+		if(u_pw2 != u_pw){
+			alert("비밀번호가 일치하지 않습니다.");
 			$("#u_pw2").focus();
 			return;
 		}
@@ -256,10 +266,10 @@
 			alert("생년월일을 선택해주세요.");
 			return;
 		}
-		/* if(!$("#u_gender").prop("checked")){
+		if(!$(".male").checked && !$(".female").prop("checked")){
 			alert("성별을 선택해주세요.");
 			return;
-		} */
+		}
 		if(u_tel2 == null || u_tel2 == undefined || u_tel2 == ""){
 			alert("연락처를 입력해주세요.");
 			$("#u_tel2").focus();
@@ -268,6 +278,11 @@
 		if(u_tel3 == null || u_tel3 == undefined || u_tel3 == ""){
 			alert("연락처를 입력해주세요.");
 			$("#u_tel3").focus();
+			return;
+		}
+		if(u_email1 == null || u_email1 == undefined || u_email1 == ""){
+			alert("이메일을 입력해주세요.");
+			$("#u_email1").focus();
 			return;
 		}
 		

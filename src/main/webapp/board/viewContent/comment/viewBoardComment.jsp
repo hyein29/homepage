@@ -102,8 +102,10 @@ $(document).ready(function(){
 				var c_reg_date = data[i].c_reg_date;
 				var c_content = data[i].c_content;
 				var c_id = data[i].u_id;
+				var u_name = data[i].u_name;
 				var delete_c_no = "delete"+c_no;
 				var update_c_no = "update"+c_no;
+				
 				
 				tableElement += "<td class='cmt2Writer'><b>"
 							+ c_writer
