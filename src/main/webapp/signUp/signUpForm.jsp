@@ -25,25 +25,25 @@
 				
 					<tr>
 						<td class="td1">아이디</td>
-						<td class="td2"><input type="text" id="u_id" name="u_id" required minlength="4" autocomplete="off"></td>
+						<td class="td2"><input type="text" id="u_id" name="u_id" required minlength="4" maxlength="12" autocomplete="off"></td>
 						<td class="td3"><button id="checkId" class="btn btn-light btn-sm">중복체크</button></td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호</td>
-						<td><input type="password" id="u_pw" name="u_pw" required minlength="8" autocomplete="off"></td>
+						<td><input type="password" id="u_pw" name="u_pw" required minlength="4" maxlength="16" autocomplete="off"></td>
 						<td></td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호 확인</td>
-						<td><input type="password" id="u_pw2" required autocomplete="off"></td>
+						<td><input type="password" id="u_pw2" required minlength="4" maxlength="16" autocomplete="off"></td>
 						<td><div id="alertPw"></div></td>
 					</tr>
 					
 					<tr>
 						<td>이름</td>
-						<td><input type="text" id="u_name" name="u_name" required autocomplete="off"></td>
+						<td><input type="text" id="u_name" name="u_name" required minlength="2" maxlength="8" autocomplete="off"></td>
 						<td></td>
 					</tr>
 					
@@ -73,8 +73,8 @@
 								<option>011</option>
 								<option>016</option>
 							</select>-
-							<input type="text" name="u_tel2" id="u_tel2" required size="2px" autocomplete="off">-
-							<input type="text" name="u_tel3" id="u_tel3" required size="2px" autocomplete="off">
+							<input type="text" name="u_tel2" id="u_tel2" required maxlength="4" size="2px" autocomplete="off">-
+							<input type="text" name="u_tel3" id="u_tel3" required maxlength="4" size="2px" autocomplete="off">
 						</td>
 						<td></td>
 					</tr>
@@ -82,7 +82,7 @@
 					<tr>
 						<td>이메일</td>
 						<td colspan="2">
-							<input type="text" name="u_email1" id="u_email1" required size="10px" autocomplete="off"> @
+							<input type="text" name="u_email1" id="u_email1" required minlength="4" maxlength="12" size="10px" autocomplete="off"> @
 							<input type="text" name="u_email2" id="u_email2" autocomplete="off" readonly value="naver.com">
 							
 							<select name="u_email_domain" id="u_email_domain">
@@ -266,7 +266,7 @@
 			alert("생년월일을 선택해주세요.");
 			return;
 		}
-		if(!$(".male").checked && !$(".female").prop("checked")){
+		if(!$(".male").prop("checked") && !$(".female").prop("checked")){
 			alert("성별을 선택해주세요.");
 			return;
 		}

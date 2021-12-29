@@ -22,12 +22,12 @@
 		
 		<div class="insertForm">
 		
-			<form action="/homepage2/insertBoardContent" method="post">
+			<form action="/homepage2/insertBoardContent" method="post" onsubmit="return confirm('게시물을 등록하시겠습니까?');">
 				
 				<table class="insertTable">
 					
 					<tr>
-						<td class="insertTitle"><input type="text" name="b_title" placeholder=" 제목을 입력하세요." size="130px;" style="height: 30px;"></td>
+						<td class="insertTitle"><input type="text" name="b_title" placeholder=" 제목을 입력하세요." size="130px;" style="height: 30px;" autocomplete="off" autofocus="autofocus"></td>
 					</tr>
 					
 					<tr>
@@ -66,7 +66,7 @@
 						<td class="insertBtns">
 						<div class="insertBtnsDiv">
 							<div class="insertSubmitBtn">
-								<input type="submit" value="작성완료" class="btn btn-dark btn-sm">
+								<input type="submit" value="작성완료" class="btn btn-dark btn-sm completed">
 							</div>
 							<div class="insertCancelBtn">
 								<input type="button" value="작성취소" onclick="location.href='/homepage2/viewBoardList'" class="btn btn-outline-dark btn-sm">
@@ -88,7 +88,9 @@
 		
 	</div>	
 	
-	
+<script>
+
+</script>	
 
 </body>
 </html>

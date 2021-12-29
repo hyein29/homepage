@@ -41,7 +41,7 @@
 					
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="u_name" value="${test.u_name}"> </td>
+						<td><input type="text" name="u_name" value="${test.u_name}" autocomplete="off"> </td>
 					</tr>
 					
 					<tr>
@@ -94,14 +94,14 @@
 								</select>-
 							</c:if>
 						
-							<input type="text" name="u_tel2" required size="3px" value="${fn:substring(test.u_tel,4,8)}" size="2px">-
-							<input type="text" name="u_tel3" required size="3px" value="${fn:substring(test.u_tel,9,13)}" size="2px">
+							<input type="text" name="u_tel2" required size="3px" value="${fn:substring(test.u_tel,4,8)}" size="2px" autocomplete="off">-
+							<input type="text" name="u_tel3" required size="3px" value="${fn:substring(test.u_tel,9,13)}" size="2px" autocomplete="off">
 						</td>
 					</tr>
 					
 					<tr>
 						<td>이메일</td>
-						<td><input type="email" name="u_email" value="${test.u_email}"></td>
+						<td><input type="email" name="u_email" value="${test.u_email}" autocomplete="off"></td>
 					</tr>
 					
 					<tr>

@@ -54,8 +54,11 @@ public class ViewBoardContentProcess extends HttpServlet {
 			userList = user_dao.viewUserinfo(userId);
 			request.setAttribute("userList", userList);
 			
+			dao.updateBoardViews(boardNo);
+			
 			boardContentList = dao.boardViewContent(boardNo);
 			request.setAttribute("boardContentList", boardContentList);
+			
 				
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
@@ -97,6 +100,8 @@ public class ViewBoardContentProcess extends HttpServlet {
 		try {
 			userList = user_dao.viewUserinfo(userId);
 			request.setAttribute("userList", userList);
+			
+			dao.updateBoardViews(boardNo);
 			
 			boardContentList = dao.boardViewContent(boardNo);
 			request.setAttribute("boardContentList", boardContentList);

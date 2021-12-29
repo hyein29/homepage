@@ -27,10 +27,10 @@ public class UpdateBoardCommentProcess extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String boardNo = request.getParameter("b_no");
-		String boardViews = request.getParameter("b_views");
 		String updateCommentNo = request.getParameter("c_no");
 		String commentNo = updateCommentNo.substring(6);
 		String commentContent = request.getParameter("c_content");
+		
 		
 		CommentDAO dao = new CommentDAO();
 		
@@ -38,10 +38,8 @@ public class UpdateBoardCommentProcess extends HttpServlet {
 			
 			dao.commentUpdate(commentContent, commentNo);
 			
-			String page = "/viewBoardContent?b_no"+boardNo+"&b_views="+boardViews;
+			response.sendRedirect("/homepage2/viewBoardContent?b_no="+boardNo);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);
 			
 		} catch (SQLException | NamingException e) {
 			// TODO Auto-generated catch block

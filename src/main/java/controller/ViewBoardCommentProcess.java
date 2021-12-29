@@ -36,7 +36,6 @@ public class ViewBoardCommentProcess extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		/* String userGrade = (String) session.getAttribute("u_grade"); */
 		
 		String userGrade = "";
 		

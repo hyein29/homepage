@@ -294,6 +294,7 @@ public class UserDAO {
 			
 			init(conn, pstmt, rs);			
 			init2(conn, pstmt, rs);			
+			init3(conn, pstmt, rs);
 			
 			
 		} catch (Exception e) {
@@ -396,6 +397,36 @@ public class UserDAO {
 	         String sqlList[] = { "SET @CNT = 0",
 	               "UPDATE comment SET comment.c_no = @CNT:=@CNT+1", 
 	               "ALTER TABLE comment AUTO_INCREMENT=" + (count + 1) };
+
+	         for (int i = 0; i < 3; i++) {
+	            pstmt = conn.prepareStatement(sqlList[i]);
+	            pstmt.executeUpdate();
+	         }
+
+	      } finally {
+	         if (rs != null) {
+	            rs.close();
+	         }
+	      }
+	   }
+	
+	
+	public void init3(Connection conn, PreparedStatement pstmt, ResultSet rs) throws SQLException {
+
+	      int count = 0;
+	      String sql = "select count(*) as 'count' from user";
+
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+
+	         if (rs.next()) {
+	            count = rs.getInt("count");
+	         }
+
+	         String sqlList[] = { "SET @CNT = 0",
+	               "UPDATE user SET user.u_no = @CNT:=@CNT+1", 
+	               "ALTER TABLE user AUTO_INCREMENT=" + (count + 1) };
 
 	         for (int i = 0; i < 3; i++) {
 	            pstmt = conn.prepareStatement(sqlList[i]);

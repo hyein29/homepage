@@ -44,6 +44,7 @@ public class ViewBoardPasswordProcess extends HttpServlet {
 		
 		if(userGrade.equals("admin")) {
 			try {
+				
 				boardContentList = dao.boardViewContent(boardNo);
 				request.setAttribute("boardContentList", boardContentList);
 					

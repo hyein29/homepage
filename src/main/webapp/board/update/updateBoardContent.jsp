@@ -24,15 +24,15 @@
 		
 		<div class="updateForm">
 			
-			<form action="/homepage2/updateBoardContent" method="post">
+			<form action="/homepage2/updateBoardContent" method="post" onsubmit="return confirm('게시물을 수정하시겠습니까?');">
 		
 				<input type="hidden" name="b_no" value="${test.b_no}">
-				<input type="hidden" name="b_views" value="${test.b_views}">
+				<%-- <input type="hidden" name="b_views" value="${test.b_views}"> --%>
 		
 				<table class="updateTable">
 				
 					<tr>
-						<td class="updateTitle"><input type="text" name="b_title" value="${test.b_title}"  size="130px;" style="height: 30px;"></td>
+						<td class="updateTitle"><input type="text" name="b_title" value="${test.b_title}"  size="130px;" style="height: 30px;" autocomplete="off"></td>
 					</tr>
 					
 					<tr>

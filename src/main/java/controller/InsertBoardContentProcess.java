@@ -57,7 +57,8 @@ public class InsertBoardContentProcess extends HttpServlet {
 		try {
 			dao.boardInsert(userId, checkBox, boardTitle, boardWriter, boardPw, boardContent);
 			
-			String page = "/viewBoardList";
+			//String page = "/viewBoardList";
+			String page = "/board/insert/insert_success.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);

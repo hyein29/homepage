@@ -49,8 +49,8 @@ public class CommentDAO {
 				dto.setC_no(rs.getString("c_no"));
 				dto.setC_writer(rs.getString("c_writer"));
 				dto.setC_content(rs.getString("c_content"));
-				dto.setC_reg_date(rs.getString("c_reg_date").substring(0, 16));
-				dto.setC_update_date(rs.getString("c_update_date").substring(0, 16));
+				dto.setC_reg_date(rs.getString("c_reg_date").substring(0, 19));
+				dto.setC_update_date(rs.getString("c_update_date").substring(0, 19));
 				dto.setB_no(rs.getString("b_no"));
 				dto.setU_id(rs.getString("u_id"));
 				
@@ -74,22 +74,7 @@ public class CommentDAO {
 		
 	}
 	
-	
-	
-	
-	public void boardViewContent(String boardNo, String boardViews) throws NamingException, SQLException {
-		
-	}
-	
-	
-	public void updateViews(String boardViews, String boardNo) throws NamingException, SQLException {
-		
-	}
-	
-	
-	
-	
-	
+
 	public void commentInsert(String userId, String commentWriter, String commentContent, String boardNo) throws NamingException, SQLException {
 		
 		try {
@@ -118,12 +103,6 @@ public class CommentDAO {
 	}
 	
 	
-	
-	public void searchBoardList(String searchOpt, String searchVal) throws NamingException, SQLException {
-		
-		
-	}
-
 	
 	public void commentDelete(String commentNo) throws SQLException, NamingException {
 		
@@ -172,46 +151,8 @@ public class CommentDAO {
 			conn.close();
 		}
 		
-		
-		
-		
 	}
 	
-//	public String countComment(String boardNo) throws NamingException, SQLException {
-//		
-//		String comment_cnt = "0";
-//		
-//		try{
-//			Context init = new InitialContext();
-//		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-//		    conn = ds.getConnection();
-//			
-//			String sql = "select count(*) from comment where b_no = ?";
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, boardNo);
-//			
-//			rs = pstmt.executeQuery();
-//
-//			while(rs.next()) {
-//				comment_cnt = rs.getString("count(*)");
-//				System.out.println("comment_cnt = "+ comment_cnt);
-//			}
-//			
-//			
-//			
-//		}catch(SQLException ex){
-//			System.out.println("comment count ½ÇÆÐ");
-//		}finally{
-//			rs.close();
-//			pstmt.close();
-//			conn.close();
-//		}
-//		
-//		return comment_cnt;
-//		
-//	}
 
 	public void init(Connection conn, PreparedStatement pstmt, ResultSet rs) throws SQLException {
 

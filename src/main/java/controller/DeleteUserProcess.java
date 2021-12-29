@@ -51,10 +51,6 @@ public class DeleteUserProcess extends HttpServlet {
 			}
 			
 		}
-
-		
-		
-		
 		
 	}
 

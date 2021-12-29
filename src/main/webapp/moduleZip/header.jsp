@@ -14,14 +14,12 @@
 			<c:choose>
 				<c:when test="${sessionGrade eq 'admin'}">
 					<div class="hdTop">
-		
 						<div class="hdNavBar">
 							<nav class="test">
 							
 								<ul class="hdNavForAdmin">
-								
 									<li class="hdNavItem">
-										<a href="/homepage2/logout">로그아웃</a>
+										<a href="#" id="logoutBtn">로그아웃</a>
 									</li>
 									
 									<li class="hdNavItem">
@@ -39,20 +37,16 @@
 							</nav>
 						</div>
 					</div>
-				
-				
 				</c:when>
 				
 				<c:otherwise>
 					<div class="hdTop">
-		
 						<div class="hdNavBar">
 							<nav class="test">
 							
 								<ul class="hdNav">
-								
 									<li class="hdNavItem">
-										<a href="/homepage2/logout">로그아웃</a>
+										<a href="#" id="logoutBtn">로그아웃</a>
 									</li>
 									
 									<li class="hdNavItem">
@@ -138,12 +132,31 @@
 	
 </div>
 
-	<!-- 
+
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-$(".searchSubmitBtn").on("click", function(){
+/* $(".searchSubmitBtn").on("click", function(){
 	alert("기능 미구현");
-})
+}) */
 
-</script> -->
+	$(function(){
+		
+		$("#logoutBtn").on("click", function(){
+			
+			if(confirm("로그아웃 하시겠습니까?")){
+				alert("로그아웃 되었습니다.");
+				location.href="/homepage2/logout";
+			}else{
+				alert("취소되었습니다.");
+			}
+		})
+		
+	})
+
+
+
+
+
+
+</script>

@@ -26,12 +26,10 @@ public class SignUpProcess extends HttpServlet {
 		String userName = request.getParameter("u_name");
 		String userBirth = request.getParameter("u_birth");
 		String userGender = request.getParameter("u_gender");
-		
 		String userTel1 = request.getParameter("u_tel1");
 		String userTel2 = request.getParameter("u_tel2");
 		String userTel3 = request.getParameter("u_tel3");
 		String userTel = userTel1 + "-" + userTel2 + "-" + userTel3;
-		
 		String userEmail1 = request.getParameter("u_email1");
 		String userEmail2 = request.getParameter("u_email2");
 		String userEmail = userEmail1 + "@" + userEmail2;

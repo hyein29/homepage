@@ -100,26 +100,34 @@ $(document).ready(function(){
 				var c_no = data[i].c_no;
 				var c_writer = data[i].c_writer;
 				var c_reg_date = data[i].c_reg_date;
+				var c_update_date = data[i].c_update_date;
 				var c_content = data[i].c_content;
 				var c_id = data[i].u_id;
 				var u_name = data[i].u_name;
 				var delete_c_no = "delete"+c_no;
 				var update_c_no = "update"+c_no;
+				var cmt_content = c_content;
+				var cmt_no = c_no;
 				
 				
 				tableElement += "<td class='cmt2Writer'><b>"
 							+ c_writer
 							+ "</b>"
-							+ "<span class='cmt2Date'>"
-							+ c_reg_date 
-							+ "</span></td>";
+							+ "<span class='cmt2Date'>";
 							
 							
+				if(c_reg_date!=c_update_date){
+					tableElement += c_reg_date + " (" + c_update_date + " 수정됨)"
+								+ "</span></td>";
+				}else{
+					tableElement += c_reg_date 
+					+ "</span></td>";
+				}
 								
 				if(c_id==session_id){
-					tableElement += "<td class='cmt2Up'><a href='#' id='" + update_c_no + "'>수정</a>"
+					tableElement += "<td class='cmt2Up' id='td" + update_c_no + "'><a href='#' id='" + update_c_no + "' data-owner-id='" + cmt_content + "'>수정</a>"
 							+ "</td>"
-							+ "<td class='cmt2Del'><a href='#' id='" + delete_c_no + "'>삭제</a></td>";
+							+ "<td class='cmt2Del' id='td" + delete_c_no + "'><a href='#' id='" + delete_c_no + "'>삭제</a></td>";
 				
 				}else{
 					if(session_grade=="admin"){
@@ -132,30 +140,59 @@ $(document).ready(function(){
 					}		
 				}
 				
-				tableElement += "</tr><tr><td colspan='5' class='cmt2Con'>" + c_content + "</td></tr>";
+				
+				/* tableElement += "</tr><tr><td colspan='5' class='cmt2Con' id='" + cmt_no + "' data-owner-id='" + cmt_content + "'>" + c_content + "</td></tr>"; */
+				tableElement += "</tr><tr><td colspan='5' class='cmt2Con' id='" + cmt_content + "'>" + c_content + "</td></tr>";
 				
 				$(document).on("click", "#"+delete_c_no, function(){
 					if(confirm("정말 삭제하시겠습니까?")){
 						alert("댓글이 삭제되었습니다.");
-						location.href="/homepage2/deleteBoardComment?b_no="+b_no+"&b_views="+b_views+"&c_no="+delete_c_no;
+						location.href="/homepage2/deleteBoardComment?b_no="+b_no+"&c_no="+delete_c_no;
 					}else{
 						alert("취소되었습니다.");
-					}   
+					}
 				})
 				
 				
 				
 				$(document).on("click", "#"+update_c_no, function(){
+					var comment_content = $(this).attr("data-owner-id");
 					
-					alert("기능 미구현");
+					$("#"+cmt_content).html("<input type='text' id='update_content' value='" + comment_content + "'size='80px'>");
+					$("#td"+update_c_no).html("<a href='#' id='btn_" + update_c_no + "' data-owner-id='" + cmt_content + "'>작성</a>");
+					$("#td"+delete_c_no).html("<a href='#' id='btn_" + delete_c_no + "' data-owner-id='" + cmt_content + "'>취소</a>");
 					
-					/* if(confirm("수정하시겠습니까?")){
-						alert("댓글이 수정되었습니다.");
-						location.href="/homepage2/updateBoardComment?b_no="+b_no+"&b_views="+b_views+"&c_no="+update_c_no+"&c_content="+c_content;
-					}else{
-						alert("취소되었습니다.");
-					}  */  
+					
 				})
+				
+				
+				$(document).on("click", "#btn_"+update_c_no, function(){
+					var update_content = $("#update_content").val();
+					
+					if(confirm("수정하시겠습니까?")){
+						alert("댓글이 수정되었습니다.");
+						location.href="/homepage2/updateBoardComment?b_no="+b_no+"&c_no="+update_c_no+"&c_content="+update_content;
+					}else{
+						
+					}
+					
+				})
+				
+				
+				$(document).on("click", "#btn_"+delete_c_no, function(){
+					
+					if(confirm("댓글 수정을 취소하시겠습니까?")){
+						
+						$("#"+cmt_content).html(cmt_content);
+						$("#td"+update_c_no).html("<a href='#' id='" + update_c_no + "' data-owner-id='" + cmt_content + "'>수정</a>");
+						$("#td"+delete_c_no).html("<a href='#' id='" + delete_c_no + "'>삭제</a>");
+						
+					}else{
+						
+					}
+					
+				})
+				
 				
 			})
 			

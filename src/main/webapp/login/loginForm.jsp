@@ -14,7 +14,7 @@
 		<div class="loginForm">
 		  <h2>Login</h2>
 	      <div class="idForm">
-	        <input type="text" name="u_id" class="id" placeholder="ID" id="u_id">
+	        <input type="text" name="u_id" class="id" placeholder="ID" id="u_id" autofocus="off">
 	      </div>
 	      <div class="passForm">
 	        <input type="password" name="u_pw" class="pw" placeholder="PW" id="u_pw">
@@ -60,8 +60,6 @@
 				}
 			})
 		})
-		
-		
 		
 	})
 

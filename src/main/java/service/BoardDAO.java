@@ -149,23 +149,23 @@ public class BoardDAO {
 		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
 		    conn = ds.getConnection();
 		    
-		    String sql_u = "update board set b_views=b_views+1 where b_no = ?";
-			
-			pstmt = conn.prepareStatement(sql_u);
-			
-			pstmt.setString(1, boardNo);
-			
-			pstmt.executeUpdate();
-			
-			
-			
-			pstmt.close();
-			conn.close();
-			
-			conn = null;
-			pstmt = null;
-			
-			conn = ds.getConnection();
+			/*
+			 * String sql_u = "update board set b_views=b_views+1 where b_no = ?";
+			 * 
+			 * pstmt = conn.prepareStatement(sql_u);
+			 * 
+			 * pstmt.setString(1, boardNo);
+			 * 
+			 * pstmt.executeUpdate();
+			 * 
+			 * 
+			 * 
+			 * pstmt.close(); conn.close();
+			 * 
+			 * conn = null; pstmt = null;
+			 * 
+			 * conn = ds.getConnection();
+			 */
 		    
 			String sql = "select * from board b join user u on b.u_id = u.u_id where b_no=?";
 			
@@ -214,32 +214,34 @@ public class BoardDAO {
 		return boardList;
 	}
 	
-	
-//	public void updateViews(String boardNo) throws NamingException, SQLException {
-//		
-//		
-//		try{
-//			Context init = new InitialContext();
-//		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-//		    conn = ds.getConnection();
-//			
-//			String sql = "update board set b_views=b_views+1 where b_no = ?";
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, boardNo);
-//			
-//			pstmt.executeUpdate();
-//			
-//		}catch(SQLException ex){
-//			System.out.println("조회수 업데이트 실패");
-//		}finally{
-//			pstmt.close();
-//			conn.close();
-//		}
-//	}
-	
-	
+	public void updateBoardViews(String boardNo) throws NamingException, SQLException {
+		try{
+			Context init = new InitialContext();
+		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+		    conn = ds.getConnection();
+		    
+		    String sql_u = "update board set b_views=b_views+1 where b_no = ?";
+			
+			pstmt = conn.prepareStatement(sql_u);
+			
+			pstmt.setString(1, boardNo);
+			
+			pstmt.executeUpdate();
+			
+			
+		}catch(SQLException ex){
+			System.out.println("updateBoardViews 실패");
+			
+		}finally{
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(conn != null)
+				conn.close();
+		}
+		
+	}
 	
 	public void boardInsert(String userId, String checkBox, String boardTitle, String boardWriter, String boardPw, String boardContent) throws NamingException, SQLException {
 		

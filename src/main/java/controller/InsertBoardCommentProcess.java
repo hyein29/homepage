@@ -34,7 +34,6 @@ public class InsertBoardCommentProcess extends HttpServlet {
 		String commentWriter = request.getParameter("c_writer");
 		String commentContent = request.getParameter("c_content");
 		String boardNo = request.getParameter("b_no");
-//		System.out.println(userId+ commentWriter+ commentContent+ boardNo);
 		
 		commentContent = XssReplace(commentContent);
 		
